@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload de Exames</title>
+</head>
+<body>
+    <h1>Upload de Exames Laboratoriais</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="arquivos" multiple required>
+        <button type="submit">Enviar</button>
+    </form>
+
+
+    {% for item in resultados_por_arquivo %}
+    <hr>
+    <h2>{{ item.nome }}</h2>
+    <div style="white-space: pre-line; width: 50%; margin: 20px auto; text-align: left; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
+        {{ item.texto_formatado }}
+    </div>
+
+
+    
+{% endfor %}
+
+
+</body>
+</html>
